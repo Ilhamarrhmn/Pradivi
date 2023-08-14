@@ -17,7 +17,7 @@
     <body>
         <nav class="navbar sticky-top navbar-expand-lg navbar-light p-4 shadow-sm bg-white" style="font-family: 'Didact Gothic', sans-serif;">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}"><img src="/assets/image/logo.png" width="35" height="35" class="d-inline-block" alt="icon"> Palabuhanratu</a>
+                <a class="navbar-brand" href="{{ url('/') }}"><img src="/assets/image/logo.png" width="35" height="35" class="d-inline-block" alt="icon"> Palabuhanratu Digital Village</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -46,9 +46,7 @@
                                 @csrf
                             </form>
                         @else
-                            <a class="nav-link" href="">
-                                Selamat Datang {{ Auth::user()->name }}!
-                            </a>
+                            <p class="nav-link">Selamat Datang {{ Auth::user()->name }}!</p>
                             <a class="nav-link bi bi-box-arrow-right" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

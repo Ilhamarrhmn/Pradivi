@@ -12,6 +12,6 @@ class Umkm extends Model
     protected $guarded = ['id'];
     
     protected $fillable = [
-        'namaproduk', 'harga', 'kategori', 'berat', 'fotoproduk', 'deskripsi', 'whatsapp', 'facebook', 'instagram', 'tokoonline',
+        'namaumkm', 'namaproduk', 'harga', 'kategori', 'berat', 'fotoproduk', 'deskripsi', 'whatsapp', 'facebook', 'instagram', 'tokoonline',
     ];
 }

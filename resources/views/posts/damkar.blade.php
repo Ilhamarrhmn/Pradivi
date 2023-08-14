@@ -20,11 +20,8 @@
                 <tr>
                     <th>Id</th>
                     <th>Nama</th>
-                    <th>Kontak</th>
                     <th>Lokasi</th>
-                    <th>Foto Kejadian</th>
                     <th>Instansi</th>
-                    <th>Deskripsi</th>
                     <th>Tanggal Pembuatan</th>
                     <th>Action</th>
                 </tr>
@@ -34,11 +31,8 @@
                 <tr>
                     <td>{{ $emergencys->id }}</td>
                     <td>{{ $emergencys->nama }}</td>
-                    <td>{{ $emergencys->kontak }}</td>
                     <td>{{ $emergencys->lokasi }}</td>
-                    <td><img src="images/emergency/{{ $emergencys->image }}" alt="Foto Kejadian" width="50px" height="50px"></td>
                     <td>{{ $emergencys->instansi }}</td>
-                    <td>{{ $emergencys->deskripsi }}</td>
                     <td>{{ date('Y-m-d', strtotime($emergencys->created_at)) }}</td>
                     <td>
                     <a href="https://www.google.co.id/maps/place/{{$emergencys->lokasi}}" class="btn btn-primary">Lihat Lokasi</a>

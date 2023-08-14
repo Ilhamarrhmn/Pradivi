@@ -7,6 +7,11 @@ use App\Models\Umkm;
 
 class UmkmController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $umkms = Umkm::all();
@@ -18,9 +23,15 @@ class UmkmController extends Controller
         return view('umkm.create');
     }
 
+    public function edit(Umkm $umkm)
+    {
+        return view('umkm.edit', compact('umkm'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
+            'namaumkm' => 'required',
             'namaproduk' => 'required',
             'harga' => 'required',
             'kategori' => 'required',
@@ -28,21 +39,52 @@ class UmkmController extends Controller
             'fotoproduk' => 'required|image',
             'deskripsi' => 'required',
             'whatsapp' => 'required',
-            'facebook' => '',
-            'instagram' => '',
-            'tokoonline' => '',
+            'facebook' => 'required',
+            'instagram' => 'required',
+            'tokoonline' => 'required',
             ]);
 
-        $input = $request->all();
+        $data = $request->all();
 
         if ($image = $request->file('fotoproduk')) {
             $destinationPath = 'images/umkm/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['fotoproduk'] = "$profileImage";
+            $data['fotoproduk'] = "$profileImage";
         }
       
-        Umkm::create($input);
-        return redirect()->route('dashboardumkm')->with('success', 'Data berhasil di Simpan!');
+        Umkm::create($data);
+        return redirect()->route('dashboardumkm')->with('success', 'Produk berhasil di Simpan!');
+    }
+    
+    public function update(Request $request, Umkm $umkm)
+    {
+        $data = $request->validate([
+            'namaumkm' => 'required',
+            'namaproduk' => 'required',
+            'harga' => 'required',
+            'kategori' => 'required',
+            'berat' => 'required',
+            'deskripsi' => 'required',
+            'whatsapp' => 'required',
+            'facebook' => 'required',
+            'instagram' => 'required',
+            'tokoonline' => 'required',
+            ]);
+        
+        $umkm->fill($data)->save();
+        return redirect()->route('dashboardumkm')->with('success', 'Berhasil edit Produk!');
+    }
+
+    public function destroy(Umkm $umkm)
+    {
+        if(file_exists(public_path('/images/umkm/'.$umkm->fotoproduk))){
+            unlink(public_path('/images/umkm/'.$umkm->fotoproduk));
+        }else{
+            return redirect()->back()->with('error', 'Gambar tidak tersedia!');
+        }
+
+        $umkm->delete();
+        return redirect()->back()->with('success', 'Berhasil menghapus Produk!');
     }
 }

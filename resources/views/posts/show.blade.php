@@ -3,7 +3,12 @@
 <title>{{$post->title}}</title>
 
 @section('content')
-    <div class="mt-5" style="max-width: 100%; overflow: hidden;">
+
+    <div class="mt-4 pt-3 pb-1 px-4 rounded" style="background-color: rgb(243, 243, 243)">
+        <small>{{ Breadcrumbs::render('artikel', $post) }}</small>
+    </div>
+
+    <div class="mt-3" style="max-width: 100%; overflow: hidden;">
         <h2 style="font-family: Sans-serif;">{{$post->title}}</h2>
         <p class="text-muted">{{$post->author}}, Tanggal Publikasi {{date('Y-m-d', strtotime($post->published_at))}}</p>
         <div style="text-align: justify;">

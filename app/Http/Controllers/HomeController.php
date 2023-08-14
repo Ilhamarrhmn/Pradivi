@@ -41,7 +41,7 @@ class HomeController extends Controller
             $request->file('upload')->move(public_path('images'), $fileName);
     
             $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-            $url = asset('images/'.$fileName); 
+            $url = asset('images/berita/'.$fileName); 
             $msg = 'Image uploaded successfully'; 
             $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
                
@@ -92,8 +92,7 @@ class HomeController extends Controller
             'body' => 'required',
             ]);
 
-        $post->fill($data);
-        $post->save();
+        $post->fill($data)->save();
         return redirect()->route('dashboard')->with('success', 'Berhasil edit Artikel!');
     }
 
@@ -119,11 +118,5 @@ class HomeController extends Controller
     {
         $emergency3 = Emergency::where('instansi', 'rsud')->get();
         return view('posts.rsud', compact('emergency3'));
-    }
-
-    public function destroyEmergency(Emergency $emergency)
-    {
-        $emergency->delete();
-        return redirect()->back()->with('success', 'Berhasil Menghapus!');
     }
 }

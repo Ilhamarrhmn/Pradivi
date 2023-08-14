@@ -6,36 +6,30 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Emergency;
 use App\Models\Umkm;
+use App\Stats\ViewStats;
 
 class MainController extends Controller
 {
     public function index()
     {
+        $stats = ViewStats::query()->start(now()->startOfYear())->end(now()->endOfYear())->groupByYear()->get()->first();
+        ViewStats::increase();
+
         $posts = Post::paginate(3);
-        return view('index', compact('posts'));
+        return view('index', compact('posts','stats'));
     }
 
     public function emergency(Request $request)
     {
         $request->validate([
             'nama' => 'required',
-            'kontak' => 'required',
             'lokasi' => 'required',
-            'image' => 'required|image',
             'instansi' => 'required',
-            'deskripsi' => 'required',
             ]);
 
-        $input = $request->all();
-
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/emergency/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }
+        $emergency = $request->all();
       
-        Emergency::create($input);
+        Emergency::create($emergency);
         return redirect()->back()->with('success', 'Data berhasil di Kirim!');
     }
 
@@ -54,21 +48,41 @@ class MainController extends Controller
     {
         return view('profile.visimisi');
     }
-
-    public function vLayanan()
+    
+    public function vSejarah()
     {
-        return view('layanan');
+        return view('profile.sejarah');
+    }
+
+    public function vWilayah()
+    {
+        return view('profile.wilayah');
+    }
+    
+    public function vStruktur()
+    {
+        return view('pemerintahan.struktur');
+    }
+    
+    public function vPerangkat()
+    {
+        return view('pemerintahan.perangkat');
+    }
+
+    public function vLembaga()
+    {
+        return view('pemerintahan.lembaga');
     }
 
     public function vUmkm()
     {
-        $umkms = Umkm::paginate(15);
-        return view('umkm', compact('umkms'));
+        $umkm = Umkm::paginate(15);
+        return view('umkm.umkm', compact('umkm'));
     }
 
     public function vDetailUmkm(Umkm $umkm)
     {
-        return view('detailumkm', compact('umkm'));
+        return view('umkm.detailumkm', compact('umkm'));
     }
 
     public function vBerita()

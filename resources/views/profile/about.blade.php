@@ -3,38 +3,28 @@
 @section('title', 'About')
 
 @section('content')
-		<div class="container text-center">
-			<img src="{{ asset('assets/image/user.jpg') }}" width="230" class="rounded-circle">
-			<h2 class="font-weight-light" style="margin:25px;">Ilham Arrahman</h2>
-			<p>Teknik Informatika</p>
-			<p>Universitas Muhamadiyah Sukabumi</p>
-			<hr class="my-6">
-		</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col text-center">
-				<h1 id="About"></h1>
-				<h1>About</h1>
+	<div class="mt-4 pt-3 pb-1 px-4 rounded" style="background-color: rgb(243, 243, 243)">
+		<small>{{ Breadcrumbs::render('about') }}</small>
+	</div>
+
+		<div class="card mb-3 border-0 text-center">
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img src="{{ asset('assets/image/fotolurah.jpg') }}" height="400px" alt="foto lurah">
+				</div>
+				<div class="col-md-8 mt-5">
+					<div class="card-body">
+					<h3 class="card-title">LURAH</h3>
+					<p class="card-text">HENDRIANA, S,IP.,M.Si</p>
+					<p class="card-text"><small class="text-muted">NIP : 19810505 200801 1 006</small></p>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col text-justify">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div>
-			<div class="col text-justify">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div>
-		</div>
+	<hr class="my-6">
+	<div class="text-center">
+		<h3 class="mt-5">PETA WILAYAH</h3>
+		<img src="/assets/image/petawilayah.png" width="100%" alt="Peta Wilayah Keluarahan Palabuhanratu">
 	</div>
 @endsection

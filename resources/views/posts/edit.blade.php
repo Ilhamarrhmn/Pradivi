@@ -3,10 +3,10 @@
 <title>{{$post->title}}</title>
 
 @section('content')
-    <div class="card">
+    <div class="card mb-5">
         <div class="card-header">{{ __('Edit') }}</div>
         <div class="card-body">
-            <form action="{{ route('postUpdate', $post->id) }}" method="post">
+            <form action="{{ route('postUpdate', $post->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-group">

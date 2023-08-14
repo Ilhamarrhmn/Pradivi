@@ -3,57 +3,48 @@
 @section('title', 'Visi & Misi')
 
 @section('content')
+
+    <div class="mt-4 pt-3 pb-1 px-4 rounded" style="background-color: rgb(243, 243, 243)">
+        <small>{{ Breadcrumbs::render('visimisi') }}</small>
+    </div>
+
 	<div class="container mb-5">
-		<p class="text-center p-5">LPKA (Lembaga Pengembangan Kemahasiswaan dan Alumni) UMMI merupakan supporting unit yang dibentuk untuk mengembangkan aktivitas kemahasiswaan yang mampu mendukung terwujudnya sarjana muslim yang berakhlak mulia, cakap, percaya diri, mampu mengembangkan ilmu pengetahuan dan teknologi serta berguna bagi umat, bangsa dan kemanusiaan.</p>
-        <h2 class="text-center">VISI</h2>
-        <div class="row row-cols-1 row-cols-md-2 g-4 fs-4">
+		<h2 class="text-center mt-5">VISI</h2>
+        <p class="text-center">"Terwujudnya Kabupaten Sukabumi yang Religius dan Mandiri"</p>
+        <h2 class="text-center mt-5">MISI</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4 fs-5">
             <div class="col">
-                <div class="card">
+                <div class="card border-0">
                     <div class="card-body">
                         <h5 class="border rounded-end d-inline-block p-4 bg-primary text-white">1</h5>
-                        <p class="border border-2 p-4">Mengembangkan Minat, Bakat, Dan Kreativitas Mahasiswa.</p>
+                        <p class="border border-2 p-4">Meningkatkan kemandirian ekonomi masyarakat berbasis ekonomi lokal melalui bidang agribisnis, pariwisata dan industri yang berwawasan lingkungan.</p>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card border-0">
                     <div class="card-body">
                         <h5 class="border rounded-end d-inline-block p-4 bg-primary text-white">2</h5>
-                        <p class="border border-2 p-4">Mengembangkan Jiwa Kewirausahaan Dan Bisnis Mahasiswa.</p>
+                        <p class="border border-2 p-4">Mewujudkan sumber daya manusia yang berdaya saing dan religius.</p>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card border-0">
                     <div class="card-body">
                         <h5 class="border rounded-end d-inline-block p-4 bg-primary text-white">3</h5>
-                        <p class="border border-2 p-4">Mengembangkan Karir Mahasiswa Untuk Dapat Bersaing Di Pasar Kerja.</p>
+                        <p class="border border-2 p-4">Mewujudkan tata kelola pemerintah yang bersih dan professional.</p>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card border-0">
                     <div class="card-body">
                         <h5 class="border rounded-end d-inline-block p-4 bg-primary text-white">4</h5>
-                        <p class="border border-2 p-4">Meningkatkan Kesejahteraan Dan Kesehatan Mahasiswa.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="border rounded-end d-inline-block p-4 bg-primary text-white">5</h5>
-                        <p class="border border-2 p-4">Meningkatkan Kesadaran Dan Ketaatan Mahasiswa Akan Hukum Yang Berlaku.</p>
+                        <p class="border border-2 p-4">Optimasi pelayanan kesehatan, pendidikan dan infrastruktur daerah.</p>
                     </div>
                 </div>
             </div>
         </div>
-        <h2 class="text-center mt-5">Misi</h2>
-        <p style="text-align: justify;">LPKA (Lembaga Pengembangan Kemahasiswaan dan Alumni) UMMI merupakan supporting unit yang dibentuk untuk mengembangkan aktivitas kemahasiswaan yang mampu mendukung terwujudnya sarjana muslim yang berakhlak mulia, cakap, percaya diri, mampu mengembangkan ilmu pengetahuan dan teknologi serta berguna bagi umat, bangsa dan kemanusiaan.</p>
 	</div>
-    <style>
-        .card {
-            border: 0;
-        }
-    </style>
 @endsection

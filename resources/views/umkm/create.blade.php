@@ -9,6 +9,10 @@
             <form action="{{ route('postUmkm') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-2">
+                    <label class="form-label">Nama UMKM</label>
+                    <input type="text" name="namaumkm" class="form-control" placeholder="Nama Umkm" required>
+                </div>
+                <div class="mb-2">
                     <label class="form-label">Nama Produk</label>
                     <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk" required>
                 </div>
@@ -43,13 +47,13 @@
                     <input class="form-control" name="whatsapp" placeholder="No Whatsapp" required>
                 </div>
                 <div class="mb-2">
-                    <input class="form-control" name="facebook" placeholder="Isi Dengan Link Facebook">
+                    <input class="form-control" name="facebook" placeholder="Isi Dengan Link Facebook" required>
                 </div>
                 <div class="mb-2">
-                    <input class="form-control" name="instagram" placeholder="Username Instagram">
+                    <input class="form-control" name="instagram" placeholder="Username Instagram" required>
                 </div>
                 <div class="mb-2">
-                    <input class="form-control" name="tokoonline" placeholder="Isi Dengan Link Toko">
+                    <input class="form-control" name="tokoonline" placeholder="Isi Dengan Link Toko" required>
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="btn btn-primary">Submit</button>
