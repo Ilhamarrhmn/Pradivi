@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('emergencys', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('lokasi');
-            $table->string('instansi');
+            $table->string('nama', 100);
+            $table->string('lokasi', 100);
+            $table->string('instansi', 50);
             $table->timestamps();
         });
     }

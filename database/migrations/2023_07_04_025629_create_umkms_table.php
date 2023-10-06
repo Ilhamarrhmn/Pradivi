@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('umkms', function (Blueprint $table) {
             $table->id();
-            $table->string('namaumkm');
-            $table->string('namaproduk');
-            $table->integer('harga');
-            $table->string('kategori');
-            $table->integer('berat');
+            $table->string('namaumkm', 25);
+            $table->string('namaproduk', 50);
+            $table->integer('harga', 30);
+            $table->string('kategori', 25);
+            $table->integer('berat', 25);
             $table->string('fotoproduk');
             $table->text('deskripsi');
-            $table->string('whatsapp');
-            $table->string('facebook');
-            $table->string('instagram');
-            $table->string('tokoonline');
+            $table->string('whatsapp', 50);
+            $table->string('facebook', 50);
+            $table->string('instagram', 50);
+            $table->string('tokoonline', 50);
             $table->timestamps();
         });
     }

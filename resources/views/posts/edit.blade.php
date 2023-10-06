@@ -19,11 +19,7 @@
                 </div>
                 <div class="form-group mt-3">
                     <label for="">Konten</label>
-                    <textarea name="body" id="summary-ckeditor" cols="30" rows="10" class="ckeditor form-control" required>{{$post->body}}</textarea>
-                </div>
-                <div class="form-group mt-3">
-                    <label for="">Tanggal Publikasi</label>
-                    <input type="date" name="published_at" class="form-control" value="{{ date('Y-m-d', strtotime($post->published_at)) }}" required>
+                    <textarea name="body" id="editor" class="form-control">{{$post->body}}</textarea>
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="btn btn-primary">Submit</button>

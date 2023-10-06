@@ -45,7 +45,7 @@
                     <td>{{ $umkm->harga }}</td>
                     <td>{{ $umkm->kategori }}</td>
                     <td>{{ $umkm->berat }}</td>
-                    <td><img src="images/umkm/{{ $umkm->fotoproduk }}" alt="Foto Produk" width="50px" height="50px"></td>
+                    <td><img src="app/public/umkm/{{ $umkm->fotoproduk }}" alt="Foto Produk" width="50px" height="50px"></td>
                     <td>
                     <a href="{{ route('updateUmkm', $umkm->id) }}" class="btn btn-primary">Edit</a>
                     <form action="{{ route('deleteUmkm', $umkm->id) }}" method="post" class="d-inline" onsubmit="return confirm('Yakin ingin dihapus?')">

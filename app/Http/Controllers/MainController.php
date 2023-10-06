@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Emergency;
+use App\Models\Wisata;
 use App\Models\Umkm;
+use App\Models\Agenda;
 use App\Stats\ViewStats;
 
 class MainController extends Controller
@@ -15,8 +17,9 @@ class MainController extends Controller
         $stats = ViewStats::query()->start(now()->startOfYear())->end(now()->endOfYear())->groupByYear()->get()->first();
         ViewStats::increase();
 
-        $posts = Post::paginate(3);
-        return view('index', compact('posts','stats'));
+        $posts = Post::latest()->paginate(4);
+        $agendas = Agenda::latest()->paginate(2);
+        return view('index', compact('posts', 'agendas', 'stats'));
     }
 
     public function emergency(Request $request)
@@ -28,7 +31,7 @@ class MainController extends Controller
             ]);
 
         $emergency = $request->all();
-      
+        
         Emergency::create($emergency);
         return redirect()->back()->with('success', 'Data berhasil di Kirim!');
     }
@@ -76,7 +79,7 @@ class MainController extends Controller
 
     public function vUmkm()
     {
-        $umkm = Umkm::paginate(15);
+        $umkm = Umkm::latest()->paginate(15);
         return view('umkm.umkm', compact('umkm'));
     }
 
@@ -87,12 +90,30 @@ class MainController extends Controller
 
     public function vBerita()
     {
-        $posts = Post::paginate(8);
+        $posts = Post::latest()->paginate(6);
         return view('informasi.berita', compact('posts'));
+    }
+
+    public function vAgenda()
+    {
+        $agendas = Agenda::latest()->paginate(3);
+        $posts = Post::latest()->limit(3)->get();
+        return view('informasi.agenda', compact('agendas', 'posts'));
+    }
+
+    public function vWisata()
+    {
+        $wisatas = Wisata::all();
+        return view('informasi.wisata', compact('wisatas'));
     }
 
     public function vGaleri()
     {
         return view('informasi.galeri');
+    }
+    
+    public function vPotensi()
+    {
+        return view('informasi.potensi');
     }
 }

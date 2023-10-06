@@ -11,6 +11,6 @@ class Post extends Model
 
     protected $guarded = ['id'];
     protected $fillable = [
-        'title','body', 'author', 'slug'
+        'title', 'gambar', 'author', 'body', 'slug'
     ];
 }

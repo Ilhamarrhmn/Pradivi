@@ -11,8 +11,8 @@ class CreateStatsTables extends Migration
         Schema::create('stats_events', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-            $table->string('type');
+            $table->string('name', 25);
+            $table->string('type', 25);
             $table->bigInteger('value');
 
             $table->timestamps();

@@ -47,7 +47,7 @@ class UmkmController extends Controller
         $data = $request->all();
 
         if ($image = $request->file('fotoproduk')) {
-            $destinationPath = 'images/umkm/';
+            $destinationPath = 'app/public/umkm/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $data['fotoproduk'] = "$profileImage";
@@ -78,8 +78,8 @@ class UmkmController extends Controller
 
     public function destroy(Umkm $umkm)
     {
-        if(file_exists(public_path('/images/umkm/'.$umkm->fotoproduk))){
-            unlink(public_path('/images/umkm/'.$umkm->fotoproduk));
+        if(file_exists(public_path('app/public/umkm/'.$umkm->fotoproduk))){
+            unlink(public_path('app/public/umkm/'.$umkm->fotoproduk));
         }else{
             return redirect()->back()->with('error', 'Gambar tidak tersedia!');
         }

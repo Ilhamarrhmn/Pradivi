@@ -51,3 +51,8 @@ Breadcrumbs::for('artikel', function (BreadcrumbTrail $trail, POST $post) {
     $trail->parent('berita');
     $trail->push($post->title, route('artikel', $post));
 });
+
+Breadcrumbs::for('agenda', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Agenda', route('agenda'));
+});

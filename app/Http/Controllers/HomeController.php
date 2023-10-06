@@ -31,24 +31,19 @@ class HomeController extends Controller
     }
 
     public function uploadImage(Request $request) 
-    {		
-        if($request->hasFile('upload')) {
+    {
+        if ($request->hasFile('upload')) {
             $originName = $request->file('upload')->getClientOriginalName();
             $fileName = pathinfo($originName, PATHINFO_FILENAME);
             $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName.'_'.time().'.'.$extension;
-        
-            $request->file('upload')->move(public_path('images'), $fileName);
+            $fileName = $fileName . '_' . time() . '.' . $extension;
     
-            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-            $url = asset('images/berita/'.$fileName); 
-            $msg = 'Image uploaded successfully'; 
-            $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
-               
-            @header('Content-type: text/html; charset=utf-8'); 
-            echo $response;
+            $request->file('upload')->move(public_path('app/public/berita/'), $fileName);
+    
+            $url = asset('app/public/berita/' . $fileName);
+            return response()->json(['fileName' => $fileName, 'uploaded'=> 1, 'url' => $url]);
         }
-    }	
+    }
 
     public function create()
     {
@@ -57,20 +52,21 @@ class HomeController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'author' => 'required',
-            'body' => 'required',
-            ]);
-        $post = new Post();
-        $post->title = $request->title;
-        $post->author = $request->author;
-        $post->body = $request->body;
-        $post->slug = Str::slug($request->title);
-        $post->published_at = $request->published_at;
+        $post = [  "title"  =>  $request->title,
+                    "gambar"  =>  $request->gambar,
+                    "author" => $request->author,
+                    "body"  =>  $request->body,
+                    "slug"  =>  Str::slug($request->title)
+                ];
 
-        $post->save();
 
+        $post['gambar'] = $request->gambar->storeAs(
+            'berita/highlight',
+            \date('YmdHis') . '.' . $request->gambar->getClientOriginalExtension(),
+            'public',
+        );
+       
+        $post  =  Post::create($post);
         return redirect()->route('dashboard')->with('success', 'Berhasil post Artikel!');
     }
 
@@ -98,6 +94,12 @@ class HomeController extends Controller
 
     public function destroy(Post $post)
     {
+        if(file_exists(public_path('/app/public/'.$post->gambar))){
+            unlink(public_path('/app/public/'.$post->gambar));
+        }else{
+            return redirect()->back()->with('error', 'Gambar tidak tersedia!');
+        }
+
         $post->delete();
         return redirect()->back()->with('success', 'Berhasil menghapus Artikel!');
     }
@@ -118,5 +120,11 @@ class HomeController extends Controller
     {
         $emergency3 = Emergency::where('instansi', 'rsud')->get();
         return view('posts.rsud', compact('emergency3'));
+    }
+
+    public function destroyEmergency(Emergency $emergency)
+    {
+        $emergency->delete();
+        return redirect()->back()->with('success', 'Data Berhasil Dihapus!');
     }
 }

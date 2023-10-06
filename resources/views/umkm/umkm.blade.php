@@ -12,7 +12,7 @@
         @foreach($umkm as $umkms)
         <div class="col">
             <div class="card border-0 shadow mt-4">
-                <img class="card-img-top img-thumbnail" src="/images/umkm/{{ $umkms->fotoproduk }}">
+                <img class="card-img-top img-thumbnail" src="app/public/umkm/{{ $umkms->fotoproduk }}">
                 <div class="card-body">
                     <p class="card-title text-muted" style="font-size: 13px">Kategori : {{$umkms->kategori}}</p>
                     <h4 class="card-text fw-bold"><a class="nav-link text-primary" href="{{ route('detailumkm', $umkms->id) }}">{{$umkms->namaproduk}}</a></h4>

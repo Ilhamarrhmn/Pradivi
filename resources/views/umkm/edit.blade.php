@@ -36,7 +36,6 @@
                 </div>
                 <div class="mb-2">
                     <label class="form-label">Foto Produk</label>
-                    <img src="/images/umkm/{{$umkm->fotoproduk}}" alt="gambar produk" width="250px" height="250px">
                     <input class="form-control" type="file" name="fotoproduk" value="{{$umkm->fotoproduk}}" accept="image/*">
                 </div>
                 <div class="mb-2">

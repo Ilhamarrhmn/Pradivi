@@ -24,7 +24,6 @@
                     <th>No</th>
                     <th>Id</th>
                     <th>Judul</th>
-                    <th>Tanggal Publikasi</th>
                     <th>Tanggal Pembuatan</th>
                     <th>Action</th>
                 </tr>
@@ -35,7 +34,6 @@
                     <td>{{ $no+1 }}</td>
                     <td>{{ $post->id }}</td>
                     <td>{{ $post->title }}</td>
-                    <td>{{ date('Y-m-d', strtotime($post->published_at)) }}</td>
                     <td>{{ date('Y-m-d', strtotime($post->created_at)) }}</td>
                     <td>
                     <a href="{{ route('artikel', $post->slug) }}" class="btn btn-primary">Show</a>
