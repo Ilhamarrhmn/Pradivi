@@ -4,7 +4,7 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
-    $trail->push('Home', route('index'));
+    $trail->push('🏚️', route('index'));
 });
 
 Breadcrumbs::for('sejarah', function (BreadcrumbTrail $trail) {
@@ -55,4 +55,9 @@ Breadcrumbs::for('artikel', function (BreadcrumbTrail $trail, POST $post) {
 Breadcrumbs::for('agenda', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Agenda', route('agenda'));
+});
+
+Breadcrumbs::for('wisata', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Wisata', route('wisata'));
 });

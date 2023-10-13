@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="mt-4 pt-3 pb-1 px-4 rounded" style="background-color: rgb(243, 243, 243)">
-        <small>{{ Breadcrumbs::render('berita') }}</small>
+        <small>{{ Breadcrumbs::render('wisata') }}</small>
     </div>
 
     <div class="mt-3 mb-5 bg-white shadow-sm p-4 rounded">
